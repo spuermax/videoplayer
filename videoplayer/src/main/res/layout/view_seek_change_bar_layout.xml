@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/caption">
+
+    <ImageView
+        android:id="@+id/tv_seek_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_controller_forward" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tv_seek_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textIcons"
+        android:text="00:00/00:00"
+        android:textSize="@dimen/role" />
+</LinearLayout>

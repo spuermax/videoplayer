@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.2'
+        //classpath 'com.jakewharton.sdkmanager:sdk-manager-plugin:1.5.0-SNAPSHOT'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenLocal()
+        jcenter()
+    }
+    //apply plugin: 'android-sdk-manager'
+}
+
+
+ext {
+    compileSdkVersion = 27
+}
+

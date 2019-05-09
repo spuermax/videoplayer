@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#BDBDBD</color>
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    <color name="textDivider">#BDBDBD</color>
+    <color name="textIcons">#ffffff</color>
+    <color name="video_item_bg">#4d000000</color>
+    <color name="video_bg">#59000000</color>
+
+    <!-- seek color -->
+    <color name="seek_background">#19ffffff</color>
+    <color name="seek_secondaryProgress">#4cffffff</color>
+    <color name="seek_secondary_text">#80ffffff</color>
+    <color name="seek_progress">#ffffff</color>
+
+</resources>

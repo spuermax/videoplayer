@@ -1,0 +1,28 @@
+apply plugin: 'maven'
+
+def userName = ""
+def password = ""
+def uploadUrl = "file://localhost/Users/wangtao/Library/Android/sdk/extras/android/m2repository/"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uploadUrl) {
+                authentication(userName: userName, password: password)
+            }
+
+            pom.groupId = 'com.edusoho.videoplayer'
+            pom.artifactId = 'es-videoplayer-cuour'
+            pom.version = '1.1.2-SNAPSHOT'
+
+            pom.project {
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+            }
+        }
+    }
+}

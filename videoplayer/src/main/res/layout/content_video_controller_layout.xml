@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true">
+
+    <com.edusoho.videoplayer.view.SeekChangeBarView
+        android:id="@+id/sbview_controller_seekinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <com.edusoho.videoplayer.view.ChangeBarView
+        android:id="@+id/change_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_controller_tools"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_gravity="bottom"
+        android:background="@color/video_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/tv_controller_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_controller_play_selector" />
+
+        <TextView
+            android:id="@+id/tv_controller_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/textIcons"
+            android:textSize="@dimen/caption"
+            tools:text="00:00/00:00" />
+
+        <SeekBar
+            android:id="@+id/sb_controller_progress"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_weight="1"
+            android:maxHeight="2dp"
+            android:minHeight="2dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:progressDrawable="@drawable/controller_play_seek_progress"
+            android:thumb="@drawable/controller_play_seek_thumb"
+            android:thumbOffset="10dp" />
+
+        <RelativeLayout
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_controller_streamlist"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/stream_btn_h"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/white_shape_rectangle_bg"
+                android:gravity="center"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:textColor="@color/textIcons"
+                android:textSize="@dimen/caption"
+                tools:text="高清" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_controller_rate"
+                android:layout_width="@dimen/stream_btn_w"
+                android:layout_height="@dimen/stream_btn_h"
+                android:layout_gravity="center"
+                android:background="@drawable/white_shape_rectangle_bg"
+                android:gravity="center"
+                android:textColor="@color/textIcons"
+                android:textSize="@dimen/caption"
+                tools:text="1x" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_controller_screen"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="0"
+            android:button="@null"
+            android:src="@drawable/sel_fullscreen" />
+    </LinearLayout>
+</FrameLayout>

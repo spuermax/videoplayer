@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/caption">
+
+    <ImageView
+        android:id="@+id/iv_videolist_cover"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/tv_videolist_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/caption"
+        android:layout_toRightOf="@id/iv_videolist_cover"
+        android:maxLines="2"
+        android:textColor="@color/textPrimary"
+        android:textSize="12sp" />
+</RelativeLayout>

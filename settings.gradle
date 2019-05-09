@@ -1,0 +1,3 @@
+include ':videoplayer', ':videodemo'
+//include ':vlc-android', ':axmlrpc', ':api', ':libvlc'
+

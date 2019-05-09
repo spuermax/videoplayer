@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/video_header_bg"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="44dp">
+
+    <TextView
+        android:text="返回"
+        android:gravity="center"
+        android:textSize="@dimen/menu"
+        android:id="@+id/tv_header_navigation"
+        android:textColor="@color/textIcons"
+        android:drawableLeft="@drawable/ic_controller_arrow_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/fl_header_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>

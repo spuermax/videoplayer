@@ -1,0 +1,26 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="grid_card_thumb_width">160dp</dimen>
+    <dimen name="grid_card_thumb_height">100dp</dimen>
+
+    <!-- md font -->
+    <dimen name="button">14sp</dimen>
+    <dimen name="menu">13sp</dimen>
+    <dimen name="caption">10sp</dimen>
+    <dimen name="body">14sp</dimen>
+    <dimen name="subhead">15sp</dimen>
+    <dimen name="role">20sp</dimen>
+    <dimen name="headline">24sp</dimen>
+    <dimen name="display1">34sp</dimen>
+
+    <!-- stream size -->
+    <dimen name="stream_btn_w">28dp</dimen>
+    <dimen name="stream_btn_h">18dp</dimen>
+    <dimen name="stream_list_decoration">25dp</dimen>
+
+    <dimen name="video_height">240dp</dimen>
+</resources>

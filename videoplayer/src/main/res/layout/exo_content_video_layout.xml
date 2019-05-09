@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player_surface_frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.edusoho.videoplayer.view.VideoControllerView
+        android:visibility="gone"
+        android:id="@+id/vc_player_controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom" />
+
+    <ProgressBar
+        android:visibility="gone"
+        android:background="@null"
+        android:id="@+id/pb_player_progress"
+        style="@android:style/Widget.Material.Light.ProgressBar.Large"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center" />
+
+</FrameLayout>

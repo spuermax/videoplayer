@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">videoplayer</string>
+    <string name="action_settings">Settings</string>
+    <string name="audio_no_url">无效媒体文件</string>
+    <string name="video_not_support">暂不支持在设备上播放,请联系管理员</string>
+
+    <!-- setting -->
+    <string name="chroma_format">Force video chroma</string>
+    <string name="chroma_format_default" translatable="false">RV32</string>
+    <string name="chroma_format_yv12">YV12</string>
+
+    <!-- setting -->
+    <string name="allow_storage_access_title">Allow VLC to access video and audio files</string>
+    <string name="allow_storage_access_description">VLC needs you to grant this permission to access the media files on this device.</string>
+    <string name="allow_settings_access_ringtone_title">Allow VLC to set the ringtone</string>
+    <string name="allow_settings_access_ringtone_description">VLC needs you to grant this permission to set up this song as your ringtone.</string>
+    <string name="allow_settings_access_brightness_title">Allow VLC to change brightness mode</string>
+    <string name="allow_settings_access_brightness_description">VLC needs you to grant this permission to change your brightness mode.</string>
+    <string name="allow_draw_overlays_title">Allow VLC player popup over other apps</string>
+    <string name="allow_sdraw_overlays_description">VLC needs you to grant this permission display your video in a popup over other applications.</string>
+    <string name="permission_ask_again">Grant permission</string>
+    <string name="exit_app">Close VLC</string>
+
+    <!-- api -->
+    <string name="network_error_title">No Internet connection</string>
+    <string name="network_error_message">This extension needs your device to be connected to internet</string>
+    <string name="vlc_error_title">VLC is not installed</string>
+    <string name="vlc_error_message">This feature needs VLC application to be installed on your device</string>
+
+    <!-- exo playr -->
+    <string name="exo_controls_previous_description">Previous track</string>
+    <string name="exo_controls_next_description">Next track</string>
+    <string name="exo_controls_pause_description">Pause</string>
+    <string name="exo_controls_play_description">Play</string>
+    <string name="exo_controls_stop_description">Stop</string>
+    <string name="exo_controls_rewind_description">Rewind</string>
+    <string name="exo_controls_fastforward_description">Fast forward</string>
+</resources>
