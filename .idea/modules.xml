@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android-videoplayer.iml" filepath="$PROJECT_DIR$/android-videoplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videodemo/videodemo.iml" filepath="$PROJECT_DIR$/videodemo/videodemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videoplayer/videoplayer.iml" filepath="$PROJECT_DIR$/videoplayer/videoplayer.iml" />
+    </modules>
+  </component>
+</project>
