@@ -6,6 +6,6 @@
         android:width="12dp"
         android:height="12dp" />
     <gradient
-        android:endColor="@color/textIcons"
-        android:startColor="@color/textIcons" />
+        android:endColor="@color/color_11D69A"
+        android:startColor="@color/color_11D69A" />
 </shape>
