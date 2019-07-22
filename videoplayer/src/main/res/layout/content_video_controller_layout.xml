@@ -109,6 +109,6 @@
             android:layout_marginRight="16dp"
             android:layout_weight="0"
             android:button="@null"
-            android:src="@drawable/sel_fullscreen" />
+            android:src="@drawable/btn_full_screen" />
     </LinearLayout>
 </FrameLayout>
