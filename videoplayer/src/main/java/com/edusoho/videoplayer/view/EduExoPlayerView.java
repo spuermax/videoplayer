@@ -278,6 +278,11 @@ public class EduExoPlayerView extends FrameLayout implements IVideoPlayer {
             @Override
             public void onChangeOverlay(boolean isShow) {
             }
+
+            @Override
+            public void onPosition(int position, int duration) {
+
+            }
         };
     }
 

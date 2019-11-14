@@ -188,6 +188,11 @@ public class AudioPlayerFragment extends Fragment
     }
 
     @Override
+    public void onPosition(int position, int duration) {
+
+    }
+
+    @Override
     public void onMediaEvent(Media.Event event) {
     }
 

@@ -37,4 +37,9 @@ public class SimpleVideoControllerListener implements VideoControllerView.Contro
     public void onChangeOverlay(boolean isShow) {
 
     }
+
+    @Override
+    public void onPosition(int position, int duration) {
+
+    }
 }

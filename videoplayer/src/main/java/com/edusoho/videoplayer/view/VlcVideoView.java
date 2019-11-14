@@ -156,6 +156,11 @@ public class VlcVideoView extends FrameLayout implements
             public void onChangeOverlay(boolean isShow) {
                 changeHeaderViewStatus(isShow);
             }
+
+            @Override
+            public void onPosition(int position, int duration) {
+
+            }
         };
     }
 

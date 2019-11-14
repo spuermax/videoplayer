@@ -158,6 +158,11 @@ public class ExoPlayerFragment extends AbstractVideoPlayerFragment implements Ex
         public void onChangeOverlay(boolean isShow) {
             changeHeaderViewStatus(isShow);
         }
+
+        @Override
+        public void onPosition(int position, int duration) {
+
+        }
     };
 
     @Override

@@ -529,6 +529,9 @@ public class VideoControllerView extends FrameLayout {
         mProgressView.setProgress(position);
         mProgressView.setSecondaryProgress(position + mSecProcess);
         updateTime(position, duration);
+        for (ControllerListener listener : mControllerListenerList) {
+            listener.onPosition(position, duration);
+        }
     }
 
     private void updateTime(int position, int duration) {
@@ -578,5 +581,7 @@ public class VideoControllerView extends FrameLayout {
         void onChangePlaySource(String url);
 
         void onChangeOverlay(boolean isShow);
+
+        void onPosition(int position, int duration);
     }
 }
