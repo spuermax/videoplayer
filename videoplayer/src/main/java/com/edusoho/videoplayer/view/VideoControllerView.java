@@ -191,11 +191,9 @@ public class VideoControllerView extends FrameLayout {
     }
 
     private void renderViewByOptions() {
-//        boolean isShowRate = mControllerOptions.getOption(ControllerOptions.RATE) & mOrientation == Configuration.ORIENTATION_LANDSCAPE;// 修改 横竖屏都显示
-//        ((View) mRateView.getParent()).setVisibility(isShowRate ? VISIBLE : GONE);
-        ((View) mRateView.getParent()).setVisibility(VISIBLE);
-//        mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
-        mScreenChangeView.setVisibility( VISIBLE);
+        boolean isShowRate = mControllerOptions.getOption(ControllerOptions.RATE);// 修改 横竖屏都显示
+        ((View) mRateView.getParent()).setVisibility(isShowRate ? VISIBLE : GONE);
+        mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
         mProgressView.setEnabled(mControllerOptions.getOption(ControllerOptions.SEEK, true));
     }
 
