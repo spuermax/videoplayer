@@ -66,7 +66,8 @@
             android:layout_width="44dp"
             android:layout_height="match_parent"
             android:clickable="true"
-            android:visibility="gone">
+            android:visibility="gone"
+            >
 
             <TextView
                 android:id="@+id/tv_controller_streamlist"

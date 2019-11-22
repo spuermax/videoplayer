@@ -191,9 +191,11 @@ public class VideoControllerView extends FrameLayout {
     }
 
     private void renderViewByOptions() {
-        boolean isShowRate = mControllerOptions.getOption(ControllerOptions.RATE) & mOrientation == Configuration.ORIENTATION_LANDSCAPE;
-        ((View) mRateView.getParent()).setVisibility(isShowRate ? VISIBLE : GONE);
-        mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
+//        boolean isShowRate = mControllerOptions.getOption(ControllerOptions.RATE) & mOrientation == Configuration.ORIENTATION_LANDSCAPE;// 修改 横竖屏都显示
+//        ((View) mRateView.getParent()).setVisibility(isShowRate ? VISIBLE : GONE);
+        ((View) mRateView.getParent()).setVisibility(VISIBLE);
+//        mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
+        mScreenChangeView.setVisibility( VISIBLE);
         mProgressView.setEnabled(mControllerOptions.getOption(ControllerOptions.SEEK, true));
     }
 
@@ -456,8 +458,10 @@ public class VideoControllerView extends FrameLayout {
         mScreenChangeView.setSelected(orientation == Configuration.ORIENTATION_LANDSCAPE);
         mScreenChangeView.setVisibility(orientation == Configuration.ORIENTATION_LANDSCAPE ? GONE : VISIBLE);
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            ((View) mRateView.getParent()).setVisibility(GONE);
-            ((View) mStreamListView.getParent()).setVisibility(GONE);
+//            ((View) mRateView.getParent()).setVisibility(GONE);
+//            ((View) mStreamListView.getParent()).setVisibility(GONE);
+            ((View) mRateView.getParent()).setVisibility(VISIBLE);
+            ((View) mStreamListView.getParent()).setVisibility(VISIBLE);
             mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
             return;
         }
