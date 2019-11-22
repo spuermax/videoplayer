@@ -188,6 +188,8 @@ public class VideoControllerView extends FrameLayout {
 
         mGestureDetector = new GestureDetectorCompat(getContext(), mGestureListener);
         mGestureDetector.setOnDoubleTapListener(getScreenDoubleTapListener());
+
+        renderViewByOptions();
     }
 
     private void renderViewByOptions() {
