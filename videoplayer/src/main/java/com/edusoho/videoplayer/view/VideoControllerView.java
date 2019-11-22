@@ -302,6 +302,7 @@ public class VideoControllerView extends FrameLayout {
         if (TextUtils.isEmpty(streamIndex) || !mM3U8StreamList.containsKey(mCurrentStreamName)) {
             return;
         }
+        ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
         mStreamListView.setText(mM3U8StreamList.get(mCurrentStreamName).getName());
     }
 
