@@ -190,6 +190,7 @@ public class VideoControllerView extends FrameLayout {
         mGestureDetector.setOnDoubleTapListener(getScreenDoubleTapListener());
 
         renderViewByOptions();
+
     }
 
     private void renderViewByOptions() {
@@ -197,6 +198,15 @@ public class VideoControllerView extends FrameLayout {
         ((View) mRateView.getParent()).setVisibility(isShowRate ? VISIBLE : GONE);
         mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
         mProgressView.setEnabled(mControllerOptions.getOption(ControllerOptions.SEEK, true));
+
+
+        ((View) mRateView.getParent()).setVisibility(mControllerOptions.getOption(ControllerOptions.RATE) ? VISIBLE : GONE);
+        if (this.isCached) {
+            ((View) mStreamListView.getParent()).setVisibility(View.VISIBLE);
+            mStreamListView.setText("已缓存");
+        } else {
+            ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
+        }
     }
 
     protected GestureDetector.OnDoubleTapListener getScreenDoubleTapListener() {
