@@ -304,6 +304,13 @@ public class VideoControllerView extends FrameLayout {
         }
         ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
         mStreamListView.setText(mM3U8StreamList.get(mCurrentStreamName).getName());
+
+        if (this.isCached) {
+            ((View) mStreamListView.getParent()).setVisibility(View.VISIBLE);
+            mStreamListView.setText("已缓存");
+        } else {
+            ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
+        }
     }
 
     protected void updateRateView(float rate) {
