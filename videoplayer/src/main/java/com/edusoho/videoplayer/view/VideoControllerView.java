@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -336,7 +337,11 @@ public class VideoControllerView extends FrameLayout {
             streamListPopupWindow = initPopupWindows(streamList, ((View) mStreamListView.getParent()).getWidth(), mStreamListView.getHeight());
         }
 
-        streamListPopupWindow.showAsDropDown((View) mStreamListView.getParent(), 0, 0);
+        int[] location = new int[2];
+        mStreamListView.getLocationOnScreen(location);
+
+        streamListPopupWindow.showAtLocation((View) mStreamListView.getParent(), Gravity.NO_GRAVITY,
+                location[0], location[1] - streamListPopupWindow.getHeight());
     }
 
     protected PopupWindow initPopupWindows(final List<M3U8Stream> streamInfoLists, int width, int height) {
