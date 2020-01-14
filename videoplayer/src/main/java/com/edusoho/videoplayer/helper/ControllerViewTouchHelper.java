@@ -192,8 +192,16 @@ public class ControllerViewTouchHelper {
     private void setAudioVolume(int vol) {
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, vol, 0);
 
-        int newVol = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        mControllerView.getAudioChangeBarView().showInfo(newVol, true);
+        if (vol < 0) {
+            vol = 0;
+        }
+
+        //要强行转Float类型才能算出小数点，不然结果一直为0
+        int volumeProgress = (int) (vol / Float.valueOf(mAudioMax) * 100);
+        if (volumeProgress > 100) {
+            volumeProgress = 100;
+        }
+        mControllerView.getAudioChangeBarView().showInfo(volumeProgress, true);
     }
 
     private void sendMouseEvent(int action, int button, int x, int y) {
