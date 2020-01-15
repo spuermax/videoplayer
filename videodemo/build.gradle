@@ -47,6 +47,4 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation files('libs/gson-2.1.jar')
 
-    implementation 'com.github.spuermax:videoplayer:V_2.5'
-
 }
