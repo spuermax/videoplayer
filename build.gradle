@@ -19,9 +19,7 @@ allprojects {
         google()
         mavenLocal()
         jcenter()
-        maven { url 'https://www.jitpack.io' }
-
-
+        maven { url "https://jitpack.io" }
     }
     //apply plugin: 'android-sdk-manager'
 }
