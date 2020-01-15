@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.edusoho.videoplayer">
 
     <uses-permission
         android:name="android.permission.READ_LOGS"
-        android:maxSdkVersion="18" /> <!-- android:maxSdkVersion="15" -->
+        android:maxSdkVersion="18"
+        tools:ignore="ProtectedPermissions" /> <!-- android:maxSdkVersion="15" -->
 
     <!-- vibration on audioplayer buttons long press -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- used for setting ringtone -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
 
     <!-- FIXME Because manifest merger will add it otherwise... -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
