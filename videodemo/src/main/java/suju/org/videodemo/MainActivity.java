@@ -298,7 +298,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Log.i("AAAAAAAA", "-----------" + po + "----" + video_container.hashCode());
-                    Log.i("AAAAAAAA", "-----------" + po + "----" + videoFragment.getView().hashCode());
                     Log.i("AAAAAAAA", "-----------" + po + "----" + inflate.hashCode());
                     Log.i("AAAAAAAA", "-----------" + po + "----" + videoFragment.isHidden()  + videoFragment.getUserVisibleHint());
                     Log.i("AAAAAAAA", "-----------" + po + "----" + activity.getSupportFragmentManager().getFragments().size());
