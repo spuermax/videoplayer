@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="START" />
+
+    <FrameLayout
+        android:id="@+id/video_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_11D69A"
+        />
+
+<!--    <fragment-->
+<!--        android:id="@+id/fragment_layout"-->
+<!--        android:name="suju.org.videodemo.VideoTestFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="210dp" />-->
+
+</RelativeLayout>

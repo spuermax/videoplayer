@@ -18,19 +18,33 @@ import android.os.Build;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 import com.edusoho.videoplayer.ui.VideoPlayerFragment;
 import com.edusoho.videoplayer.util.*;
 import com.edusoho.videoplayer.util.VLCOptions;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -38,32 +52,88 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import suju.org.videodemo.data.VideoModel;
+import suju.org.videodemo.util.MessageEvent;
 
 public class MainActivity extends AppCompatActivity {
 
     private String mediaUrl;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Thread(new Runnable() {
+        viewPager = findViewById(R.id.view_pager);
+
+        //事件监听
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                //requestMediaUrl();
+//                //loadVideoPlayer("http://default.andy.dev.qiqiuyun.cn:8071/video-player/examples/server/playlist.m3u8");
+//                 loadVideoPlayer("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+////                 loadVideoPlayer("http://dev-myh.saiyoujiaoyu.com/player/21129/file/WijUlofofPDXZ5Zu8BgrzI0yTOa3ic8J/nologin");
+//                //loadVideoPlayer("http://demo.edusoho.com/hls/2875/playlist/vri5h4wud6PQDJFiNMowZvMfGBwcJdEo.m3u8");
+//                //loadAudioPlayer("http://yinyueshiting.baidu.com/data2/music/0da46a611fa4381fc02823d1a14ce952/300672476/300672476.mp3?xcode=4aa420456406eda005ffee87c3adb48c");
+//            }
+//        }).start();
+
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+        arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
+
+        viewPager.setAdapter(new ViewPagerAdapter(this, arrayList));
+//        viewPager.setAdapter(new ViewPagerAdapter2(arrayList, this));
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void run() {
-                //requestMediaUrl();
-                //loadVideoPlayer("http://default.andy.dev.qiqiuyun.cn:8071/video-player/examples/server/playlist.m3u8");
-                 loadVideoPlayer("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
-                //loadVideoPlayer("http://demo.edusoho.com/hls/2875/playlist/vri5h4wud6PQDJFiNMowZvMfGBwcJdEo.m3u8");
-                //loadAudioPlayer("http://yinyueshiting.baidu.com/data2/music/0da46a611fa4381fc02823d1a14ce952/300672476/300672476.mp3?xcode=4aa420456406eda005ffee87c3adb48c");
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
-        }).start();
+
+            @Override
+            public void onPageSelected(int position) {
+                EventBus.getDefault().post(new MessageEvent<>(MessageEvent.EXAM_NEXT_QUESTION_VIDEO));
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     private static Bitmap maskImageForSmallSDK17(Bitmap bitmap) {
         Bitmap scaleBitmap = scaleBitmap(bitmap, 0.05f);
         scaleBitmap = scaleBitmap(scaleBitmap, 20.0f);
         Bitmap canvasBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_4444);
-        Canvas canvas = new Canvas( canvasBitmap);
+        Canvas canvas = new Canvas(canvasBitmap);
         Paint paint = new Paint();
         paint.setMaskFilter(new BlurMaskFilter(100f, BlurMaskFilter.Blur.SOLID));
 
@@ -138,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void loadVideoPlayer(String mediaUri) {
-       FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         VideoPlayerFragment fragment = new VideoPlayerFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(VideoPlayerFragment.PLAY_MEDIA_CODER, VLCOptions.NONE_RATE);
@@ -161,5 +231,88 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    public class ViewPagerAdapter extends PagerAdapter {
+
+        private List<String> arrayList;
+        private Context mContext;
+
+        public ViewPagerAdapter(Context mContext, List<String> arrayList) {
+            super();
+            this.arrayList = arrayList;
+            this.mContext = mContext;
+        }
+
+        @Override
+        public int getCount() {
+            return arrayList.size();
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            Log.i("AAAAAAAA", "-----销毁 老弟 ------" + object.toString());
+            container.removeView((View) object);
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
+            final int po = position;
+            final View inflate = LayoutInflater.from(mContext).inflate(R.layout.adapter_item_pager, container, false);
+            Log.i("AAAAAAAA", "-----来了 老弟 ------" + position + "--" + inflate.toString());
+
+            final RelativeLayout  linearLayout = inflate.findViewById(R.id.ll_layout);
+            final FrameLayout video_container = inflate.findViewById(R.id.video_container);
+
+            inflate.findViewById(R.id.btn_start);
+//            inflate.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    fragment viewById = inflate.findViewById(R.id.fragment_layout);
+//                }
+//            });
+
+
+            inflate.findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    VideoTestFragment videoFragment = new VideoTestFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(VideoPlayerFragment.PLAY_MEDIA_CODER, VLCOptions.NONE_RATE);
+                    bundle.putString(VideoPlayerFragment.PLAY_URI, arrayList.get(po));
+                    videoFragment.setArguments(bundle);
+                    AppCompatActivity activity = (AppCompatActivity) mContext;
+                    activity.getSupportFragmentManager().getFragments().size();
+                    FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.video_container, videoFragment, "111");
+                    transaction.commitAllowingStateLoss();
+                    videoFragment.playVideo(arrayList.get(po));
+
+
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + video_container.hashCode());
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + videoFragment.getView().hashCode());
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + inflate.hashCode());
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + videoFragment.isHidden()  + videoFragment.getUserVisibleHint());
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + activity.getSupportFragmentManager().getFragments().size());
+
+                }
+            });
+
+
+            container.addView(inflate);
+            return inflate;
+        }
+    }
+
+    @Subscribe
+    public void onReceiveMessage(MessageEvent messageEvent) {
     }
 }
