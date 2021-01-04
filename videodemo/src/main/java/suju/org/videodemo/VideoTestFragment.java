@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -50,15 +51,19 @@ public class VideoTestFragment extends VideoPlayerFragment {
     private String mVideoUrl;
     private String mVideoLength;
 
+    private FrameLayout frameLayout;
+
     public static VideoTestFragment newInstance(String coverUrl, String videoUrl, String videoLength) {
         Bundle args = new Bundle();
+        Log.i("AAAAAAA", "视频地址" + videoUrl);
 
         VideoTestFragment fragment = new VideoTestFragment();
-        fragment.setArguments(args);
         args.putString(VIDEO_LENGTH, videoLength);
         args.putString(COVER_URL, coverUrl);
         args.putString(VIDEO_URL, videoUrl);
+        fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
@@ -70,13 +75,13 @@ public class VideoTestFragment extends VideoPlayerFragment {
         mVideoUrl = bundle.getString(VIDEO_URL);
         setAudioCover(mAudioCover);
 
+        Log.i("AAAAAAA", "视频地址" + mVideoUrl);
+
+
         //事件监听
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
-
-
-
     }
 
     @Override
@@ -86,25 +91,37 @@ public class VideoTestFragment extends VideoPlayerFragment {
         mPlayContainer.bringToFront();
         EduExoPlayerView exoPlayerView = (EduExoPlayerView) mPlayContainer.getChildAt(0);
         exoPlayerView.bringToFront();
-        loadPlay();
+        Log.i("AAAAAAA", "视频 Fragment 状态 getUserVisibleHint" + getUserVisibleHint());
+//        if(getUserVisibleHint()){
+            loadPlay();
+//        }
+
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        Log.i("AAAAAAA","视频 Fragment 状态 " + hidden);
+        Log.i("AAAAAAA", "视频 Fragment 状态 onHiddenChanged" + hidden);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("AAAAAAA","视频 Fragment 状态 = onResume");
+        loadPlay();
+        Log.i("AAAAAAA", "视频 Fragment 状态 = onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        videoStop();
+        Log.i("AAAAAAA", "视频 Fragment 状态 = onPause");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.i("AAAAAAA","视频 Fragment 状态 = onStop");
+        Log.i("AAAAAAA", "视频 Fragment 状态 = onStop");
 
     }
 
@@ -115,7 +132,7 @@ public class VideoTestFragment extends VideoPlayerFragment {
             EventBus.getDefault().unregister(this);
         }
 
-        Log.i("AAAAAAA","视频 Fragment 状态 = onDestroyView");
+        Log.i("AAAAAAA", "视频 Fragment 状态 = onDestroyView");
 
     }
 
@@ -195,20 +212,21 @@ public class VideoTestFragment extends VideoPlayerFragment {
 
     @Subscribe
     public void onReceiveMessage(MessageEvent messageEvent) {
-        switch (messageEvent.getType()){
+        switch (messageEvent.getType()) {
             case MessageEvent.EXAM_NEXT_QUESTION_VIDEO:
-                Log.i("AAAAA","EXAM_NEXT_QUESTION + 下一题关闭视频");
-                stop();
+                Log.i("AAAAA", "EXAM_NEXT_QUESTION + 下一题关闭视频");
+//                stop();
+//                videoStop();
 //                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 //                Fragment fragmentById = getFragmentManager().findFragmentById(R.id.video_container);
 //                if (fragmentById == null) {
-//                    Log.i("AAAAA","EXAM_NEXT_QUESTION + 下一题关闭视频  | fragmentById == null");
+//                    Log.i("AAAAA", "EXAM_NEXT_QUESTION + 下一题关闭视频  | fragmentById == null");
 //                    return;
 //                }
 //                fragmentTransaction.remove(fragmentById).commitAllowingStateLoss();
                 break;
             case MessageEvent.EXAM_CARD_JUMP:
-                Log.i("AAAAA","EXAM_NEXT_QUESTION + 跳题关闭视频");
+                Log.i("AAAAA", "EXAM_NEXT_QUESTION + 跳题关闭视频");
                 stop();
                 break;
         }

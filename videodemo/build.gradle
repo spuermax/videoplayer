@@ -47,10 +47,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation files('libs/gson-2.1.jar')
 
+
     //注释一个
 //    implementation 'com.github.spuermax:videoplayer:V_2.7'
 
     api 'org.greenrobot:eventbus:3.0.0'
-
+//    api 'com.github.hackware1993:MagicIndicator:1.6.0'
 
 }

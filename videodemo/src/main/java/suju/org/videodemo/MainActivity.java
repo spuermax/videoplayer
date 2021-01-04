@@ -14,12 +14,16 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -36,6 +40,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -60,21 +65,26 @@ import java.util.Map;
 import suju.org.videodemo.data.VideoModel;
 import suju.org.videodemo.util.MessageEvent;
 
+import static android.widget.Toast.LENGTH_LONG;
+
 public class MainActivity extends AppCompatActivity {
 
     private String mediaUrl;
     private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
 
         //事件监听
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -106,8 +116,63 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
         arrayList.add("http://mov.bn.netease.com/open-movie/nos/mp4/2016/10/24/SC37RM09R_hd.mp4");
 
-        viewPager.setAdapter(new ViewPagerAdapter(this, arrayList));
+//        viewPager.setAdapter(new ViewPagerAdapter(this, arrayList));
 //        viewPager.setAdapter(new ViewPagerAdapter2(arrayList, this));
+
+
+
+        final ArrayList<Fragment> fragments = new ArrayList<>();
+        final ArrayList<String> titles = new ArrayList<>();
+        VideoTestFragment videoTestFragment = VideoTestFragment.newInstance("111111111",arrayList.get(0),"10");
+//        Bundle bundle = new Bundle();
+//        videoTestFragment.setArguments(bundle);
+
+        VideoTestFragment videoTestFragment1 = VideoTestFragment.newInstance("111111111",arrayList.get(0),"10");
+//        Bundle bundle1 = new Bundle();
+//        videoTestFragment1.setArguments(bundle1);
+
+        VideoTestFragment videoTestFragment2 = VideoTestFragment.newInstance("111111111",arrayList.get(0),"10");
+//        Bundle bundle2 = new Bundle();
+//        videoTestFragment2.setArguments(bundle2);
+
+        VideoTestFragment videoTestFragment3 = VideoTestFragment.newInstance("111111111",arrayList.get(0),"10");
+//        Bundle bundle3 = new Bundle();
+//        videoTestFragment3.setArguments(bundle3);
+
+        fragments.add(videoTestFragment);
+        fragments.add(videoTestFragment1);
+        fragments.add(videoTestFragment2);
+        fragments.add(videoTestFragment3);
+
+        titles.add("111");
+        titles.add("222");
+        titles.add("333");
+        titles.add("444");
+
+
+
+        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragments.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return fragments.size();
+            }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return titles.get(position);
+            }
+        });
+
+
+        tabLayout.setupWithViewPager(viewPager);
+
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -118,6 +183,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 EventBus.getDefault().post(new MessageEvent<>(MessageEvent.EXAM_NEXT_QUESTION_VIDEO));
+                Toast.makeText(MainActivity.this,"-" +position, LENGTH_LONG).show();
+//                VideoTestFragment fragment = (VideoTestFragment) fragments.get(position);
+//                fragment.videoStop();
 
             }
 
@@ -128,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     private static Bitmap maskImageForSmallSDK17(Bitmap bitmap) {
         Bitmap scaleBitmap = scaleBitmap(bitmap, 0.05f);
@@ -266,10 +336,12 @@ public class MainActivity extends AppCompatActivity {
         public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
             final int po = position;
             final View inflate = LayoutInflater.from(mContext).inflate(R.layout.adapter_item_pager, container, false);
+            final View frame_layout = LayoutInflater.from(mContext).inflate(R.layout.frame_layout, container, false);
             Log.i("AAAAAAAA", "-----来了 老弟 ------" + position + "--" + inflate.toString());
+            final FrameLayout frameLayout = frame_layout.findViewById(R.id.fl_video);
 
-            final RelativeLayout  linearLayout = inflate.findViewById(R.id.ll_layout);
-            final FrameLayout video_container = inflate.findViewById(R.id.video_container);
+            final RelativeLayout linearLayout = inflate.findViewById(R.id.ll_layout);
+            linearLayout.addView(frame_layout);
 
             inflate.findViewById(R.id.btn_start);
 //            inflate.setOnClickListener(new View.OnClickListener() {
@@ -292,14 +364,14 @@ public class MainActivity extends AppCompatActivity {
                     AppCompatActivity activity = (AppCompatActivity) mContext;
                     activity.getSupportFragmentManager().getFragments().size();
                     FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.video_container, videoFragment, "111");
+                    transaction.replace(frameLayout.getId(), videoFragment, "111");
                     transaction.commitAllowingStateLoss();
                     videoFragment.playVideo(arrayList.get(po));
 
 
-                    Log.i("AAAAAAAA", "-----------" + po + "----" + video_container.hashCode());
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + frameLayout.getId());
                     Log.i("AAAAAAAA", "-----------" + po + "----" + inflate.hashCode());
-                    Log.i("AAAAAAAA", "-----------" + po + "----" + videoFragment.isHidden()  + videoFragment.getUserVisibleHint());
+                    Log.i("AAAAAAAA", "-----------" + po + "----" + videoFragment.isHidden() + videoFragment.getUserVisibleHint());
                     Log.i("AAAAAAAA", "-----------" + po + "----" + activity.getSupportFragmentManager().getFragments().size());
 
                 }

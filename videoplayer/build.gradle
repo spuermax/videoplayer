@@ -78,7 +78,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:support-annotations:27.1.1'
     implementation 'com.makeramen:roundedimageview:2.2.0'
-    implementation 'com.google.android.exoplayer:exoplayer:2.8.4'
+    api 'com.google.android.exoplayer:exoplayer:2.8.4'
     implementation files('lib/zip4j_1.3.1.jar')
 }
 
