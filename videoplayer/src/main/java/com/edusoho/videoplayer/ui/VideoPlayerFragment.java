@@ -544,11 +544,11 @@ public class VideoPlayerFragment extends Fragment implements MessageBroadcastRec
         }
     }
 
-    private void setHideStream(){
+    public void setHideStream(){
         mVideoControllerView.setShowStream(true);
     }
 
-    private void setShowStream(){
+    public void setShowStream(){
         mVideoControllerView.setShowStream(false);
     }
 
