@@ -544,6 +544,14 @@ public class VideoPlayerFragment extends Fragment implements MessageBroadcastRec
         }
     }
 
+    private void setHideStream(){
+        mVideoControllerView.setShowStream(true);
+    }
+
+    private void setShowStream(){
+        mVideoControllerView.setShowStream(false);
+    }
+
     public void addLogoutListener(ILogoutListener logoutListener) {
         this.mLogoutListener = logoutListener;
         if (mVideoPlayer != null) {

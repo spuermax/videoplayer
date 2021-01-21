@@ -114,7 +114,6 @@ public class VideoTestFragment extends VideoPlayerFragment {
     @Override
     public void onPause() {
         super.onPause();
-        videoStop();
         Log.i("AAAAAAA", "视频 Fragment 状态 = onPause");
     }
 

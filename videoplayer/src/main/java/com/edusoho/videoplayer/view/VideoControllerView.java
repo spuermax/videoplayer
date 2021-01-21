@@ -78,6 +78,7 @@ public class VideoControllerView extends FrameLayout {
     private GestureDetectorCompat mGestureDetector;
     private ControllerOptions mControllerOptions;
     private boolean isCached;
+    private boolean isShowStream = false;
 
     public VideoControllerView(Context context) {
         super(context, null);
@@ -98,6 +99,14 @@ public class VideoControllerView extends FrameLayout {
     public void setControllerOptions(ControllerOptions controllerOptions) {
         this.mControllerOptions = controllerOptions;
         renderViewByOptions();
+    }
+
+    public void setShowStream(boolean showStream) {
+        isShowStream = showStream;
+    }
+
+    public boolean getShowStream(){
+        return isShowStream;
     }
 
     @Override
@@ -208,6 +217,9 @@ public class VideoControllerView extends FrameLayout {
         } else {
             ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
         }
+
+        //更新清晰度显示
+        if (isShowStream) ((View) mStreamListView.getParent()).setVisibility(View.GONE);
     }
 
     protected GestureDetector.OnDoubleTapListener getScreenDoubleTapListener() {
@@ -312,6 +324,9 @@ public class VideoControllerView extends FrameLayout {
         } else {
             ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
         }
+
+        //更新清晰度显示
+        if (isShowStream) ((View) mStreamListView.getParent()).setVisibility(View.GONE);
     }
 
     protected void updateRateView(float rate) {
@@ -495,6 +510,9 @@ public class VideoControllerView extends FrameLayout {
         } else {
             ((View) mStreamListView.getParent()).setVisibility(mM3U8StreamList != null && !mM3U8StreamList.isEmpty() ? VISIBLE : GONE);
         }
+
+        //更新清晰度显示
+        if (isShowStream) ((View) mStreamListView.getParent()).setVisibility(View.GONE);
     }
 
     public void setScreenChangeVisible(int visible) {
