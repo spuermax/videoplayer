@@ -501,6 +501,8 @@ public class VideoControllerView extends FrameLayout {
             ((View) mRateView.getParent()).setVisibility(VISIBLE);
             ((View) mStreamListView.getParent()).setVisibility(VISIBLE);
             mScreenChangeView.setVisibility(mControllerOptions.getOption(ControllerOptions.SCREEN) ? VISIBLE : GONE);
+            //更新清晰度显示
+            if (isShowStream) ((View) mStreamListView.getParent()).setVisibility(View.GONE);
             return;
         }
         ((View) mRateView.getParent()).setVisibility(mControllerOptions.getOption(ControllerOptions.RATE) ? VISIBLE : GONE);
