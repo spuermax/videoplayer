@@ -452,9 +452,7 @@ public class VideoPlayerFragment extends Fragment implements MessageBroadcastRec
         mDownloadTask = new AsyncTask<String, String, String>() {
             @Override
             protected String doInBackground(String... params) {
-                if (isDetached() || isCancelled() || getContext() == null) {
-                    return null;
-                }
+
                 return M3U8Util.downloadM3U8File(getContext(), params[0].toString());
             }
 
